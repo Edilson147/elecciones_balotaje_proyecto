@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encuesta Presidenciales 2025</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Encuesta para Jóvenes Universitarios – Presidenciales 2025</h1>
+    <p> Simulación de balotaje</p>
+  </header>
+
+  <form id="frm" method="POST" action="/enviar">
+    <fieldset>
+      <legend>1) Datos Demográficos y Socioeconómicos</legend>
+      <label>Edad</label>
+      <select name="edad" required>
+        <option value="">Seleccione</option>
+        <option>18-24</option>
+        <option>25-30</option>
+        <option>30-40</option>
+        <option>40-50</option>
+        <option>50+</option>
+      </select>
+
+      <label>Género</label>
+      <select name="genero" required>
+        <option value="">Seleccione</option>
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>No Binario</option>
+        <option>Prefiero no decir</option>
+      </select>
+
+      <label>Departamento</label>
+      <select name="depto" required>
+        <option value="">Seleccione</option>
+        <option>La Paz</option><option>Santa Cruz</option><option>Cochabamba</option>
+        <option>Oruro</option><option>Potosí</option><option>Chuquisaca</option>
+        <option>Tarija</option><option>Beni</option><option>Pando</option>
+      </select>
+
+      <label>Provincia/Localidad de origen</label>
+      <input name="provincia_origen" placeholder="Ej: Cliza, Punata, Colomi" />
+
+      <label>Situación Educativa</label>
+      <select name="situacion_educativa" required>
+        <option value="">Seleccione</option>
+        <option>Estudiante Universitario</option>
+        <option>Recién Profesionalizado</option>
+      </select>
+
+      <label>Carrera (si aplica)</label>
+      <input name="carrera" placeholder="Ing. Sistemas, Derecho, etc." />
+
+      <label>Estrato socioeconómico Percibido</label>
+      <select name="estrato" required>
+        <option value="">Seleccione</option>
+        <option>Bajo</option><option>Medio-Bajo</option><option>Medio</option><option>Medio-Alto</option>
+      </select>
+
+      <label>Estatus laboral (Recién Profesionalizados - Profesionales Junior) </label>
+      <select name="estatus_laboral">
+        <option value="">Seleccione</option>
+        <option>Empleado Institución Pública</option>
+        <option>Empleado Empresa Privada</option>
+        <option>Desempleado</option>
+        <option>Emprendedor</option>
+        <option>Freelance</option>
+        <option>Innovador</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>2) Intención de voto y alineamiento Ideológico</legend>
+      <label>Si las elecciones fueran mañana, ¿por qué candidato votaría usted?   </label>
+      <select name="intencion_1v" required>
+        <option value="">Seleccione</option>
+        <option value="A">Candidato Rodrigo Paz Pereira A (Izquierda)</option>
+        <option value="B">Candidato Jorge Quiroga Ramírez (Derecha)</option>
+        <option value="Blanco">Voto Blanco</option>
+        <option value="Nulo">Voto Nulo</option>
+        <option value="Indeciso">Aún no lo decido</option>
+      </select>
+
+      <label>¿Qué tan seguro está de su elección?  
+(1 = Nada Seguro) a (5 = Completamente Seguro)  </label>
+      <input type="number" name="firmeza" min="1" max="5" value="3" />
+
+      <label>¿Con qué tendencia política se identifica más personalmente?   </label>
+      <select name="ideologia">
+        <option>Izquierda</option><option>Centro-Izquierda</option><option>Centro</option>
+        <option>Centro-Derecha</option><option>Derecha</option>
+      </select>
+
+      <label>¿Qué tan dispuesto/a está a participar en actividades políticas o cívicas antes de las elecciones?  </label>
+      <select name="participacion_actividades">
+        <option>Muy dispuesto/a</option>
+        <option>Dispuesto/a</option>
+        <option>Neutral</option>
+        <option>Indispuesto/a</option>
+        <option>Muy indispuesto/a</option>
+      </select>
+
+       <label>¿Votó en las últimas elecciones?</label>
+      <select name="voto_ultimas">
+        <option value="1">Sí</option>
+        <option value="0">No</option>
+      </select>
+
+
+    
+    </fieldset>
+
+    <fieldset>
+      <legend>3) Factores y participación</legend>
+      <label>  Utilizando una Escala de Likert (1 = Nada Importante a 5 = Muy Importante), se evalúa la relevancia de los temas en su elección  </label>
+
+      <label>Economía</label>
+      <div class="grid-5">
+        <div><label>Estabilidad</label><input type="number" min="1" max="5" name="economia" value="3"></div>
+        <div><label>Empleo</label><input type="number" min="1" max="5" name="empleo" value="3"></div>
+        <div><label>Deuda</label><input type="number" min="1" max="5" name="educacion_importancia" value="3"></div>
+      </div>
+
+      <label>Educación</label>
+      <div class="grid-5">
+        <div><label>Calidad universitaria</label><input type="number" min="1" max="5" name="calidad_universitaria" value="3"></div>
+        <div><label>Acceso a becas</label><input type="number" min="1" max="5" name="acceso_becas" value="3"></div>
+      </div>
+
+      
+     <label>Lucha contra la Corrupción y Justicia  (1..5)</label>
+      <input type="number" name="interes_politica" min="1" max="5" value="3" />
+
+     <label>Acceso a servicios:</label>
+     <label>Salud Publica</label>
+      <input type="number" name="salud_publica" min="1" max="5" value="3" />
+
+     <label>Seguridad Ciudadana:</label>
+     <label>importancia</label>
+      <input type="number" name="seguridad_ciudadana" min="1" max="5" value="3" />
+
+     <label>Cambio Climatico y Medio Ambiente:</label>
+     <label>importancia</label>
+      <input type="number" name="cambio_climatico" min="1" max="5" value="3" />
+
+     <label>Derechos Sociales/Minorías</label>
+      <div class="grid-5">
+        <div><label>Temas de género</label><input type="number" min="1" max="5" name="temas_genero" value="3"></div>
+        <div><label>Indígenas</label><input type="number" min="1" max="5" name="indigenas" value="3"></div>
+      </div>
+     
+
+     <label>Modelo de Desarrollo del País:   </label>
+     <label>Estatismo vs. Mercado</label>
+      <input type="number" name="modelo_desarrollo" min="1" max="5" value="3" />
+
+
+     <label>Innovación y Tecnología:</label>
+      <div class="grid-5">
+        <div><label>Acceso a internet de calidad </label><input type="number" min="1" max="5" name="acceso_internet" value="3"></div>
+        <div><label>Digitalización de servicios públicos</label><input type="number" min="1" max="5" name="digitalizacion_servicios" value="3"></div>
+      </div>
+
+
+     <label>Participación Ciudadana y Transparencia:</label>
+      <div class="grid-5">
+        <div><label>Participación ciudadana en decisiones locales </label><input type="number" min="1" max="5" name="participacion_local" value="3"></div>
+        <div><label>Transparencia en contratos y licitaciones</label><input type="number" min="1" max="5" name="transparencia_contratos" value="3"></div>
+        <div><label>Rendición de cuentas de autoridades electas</label><input type="number" min="1" max="5" name="rendicion_cuentas" value="3"></div>
+      </div>
+      </div>
+
+
+    </fieldset>
+
+    <fieldset>
+      <legend>4) Percepción de candidatos (1..5)</legend>
+      <p>  ¿En qué medida describe el siguiente atributo a cada candidato? (1 = Nada en absoluto a 5 = Totalmente)   </p>
+      
+     <label>  Candidato Rodrigo Paz Pereira (Izquierda)  </label>
+      <div class="grid-6">
+        <div><label>Experiencia en gestión</label><input type="number" min="1" max="5" name="exp_gestion_A" value="3"></div>
+        <div><label>Honestidad/Transparencia</label><input type="number" min="1" max="5" name="honestidad_A" value="3"></div>
+        <div><label>Capacidad de unir a la población </label><input type="number" min="1" max="5" name="union_A" value="3"></div>
+        <div><label>Conexión con los jóvenes</label><input type="number" min="1" max="5" name="jovenes_A" value="3"></div>
+        <div><label>Liderazgo fuerte/Decisivo</label><input type="number" min="1" max="5" name="liderazgo_A" value="3"></div>
+        <div><label>Propuestas claras y realistas</label><input type="number" min="1" max="5" name="propuestas_A" value="3"></div>
+        </div>
+     <p>  Candidato Jorge Quiroga Ramírez (Derecha)  </p>
+      <div class="grid-6">
+        <div><label>Experiencia en gestión</label><input type="number" min="1" max="5" name="exp_gestion_B" value="3"></div>
+        <div><label>Honestidad/Transparencia</label><input type="number" min="1" max="5" name="honestidad_B" value="3"></div>
+        <div><label>Capacidad de unir a la población </label><input type="number" min="1" max="5" name="union_B" value="3"></div>
+        <div><label>Conexión con los jóvenes</label><input type="number" min="1" max="5" name="jovenes_B" value="3"></div>
+        <div><label>Liderazgo fuerte/Decisivo</label><input type="number" min="1" max="5" name="liderazgo_B" value="3"></div>
+        <div><label>Propuestas claras y realistas</label><input type="number" min="1" max="5" name="propuestas_B" value="3"></div>
+         </div>
+
+     <label>¿Cuál es el principal medio por el que recibe información política?</label>
+      <select name="medio_info">
+        <option>TikTok</option><option>Facebook</option><option>Instagram</option>
+        <option>Televisión tradicional</option><option>Radio tradicional</option><option>Prensa en línea</option>
+        <option>Familiares</option><option>Amigos</option>
+      </select>
+     
+     <label>¿Qué tan seguro está de su elección? (1..5)</label>
+      <input type="number" name="seguroEleccion" min="1" max="5" value="3" />
+
+     <label>¿Qué tan influyente son los medios en su decisión de voto? (1..5)</label>
+      <input type="number" name="influencia_medios" min="1" max="5" value="3" />
+
+
+
+    </fieldset>
+      
+
+
+    <!-- 5) Participación Cívica y Política -->
+<fieldset>
+  <legend>5) Participación Cívica y Política</legend>
+
+  <label>¿Con qué frecuencia participa en actividades políticas o sociales?</label>
+  <select name="freq_actividad_politica" required>
+    <option value="">Seleccione</option>
+    <option>Nunca</option>
+    <option>Rara vez</option>
+    <option>A veces</option>
+    <option>Frecuentemente</option>
+    <option>Siempre</option>
+  </select>
+
+  <label>¿Ha participado alguna vez en una marcha, foro o manifestación relacionada con temas nacionales o sociales?</label>
+  <select name="ha_participado_marcha" required>
+    <option value="">Seleccione</option>
+    <option>Sí</option>
+    <option>No</option>
+  </select>
+
+  <label>¿Está inscrito o ha formado parte de algún partido o movimiento político?</label>
+  <select name="miembro_partido" required>
+    <option value="">Seleccione</option>
+    <option>Sí</option>
+    <option>No</option>
+    <option>Prefiero no decir</option>
+  </select>
+
+  <label>¿Qué tan interesado está en la política nacional?</label>
+  <select name="interes_politica_nacional" required>
+    <option value="">Seleccione</option>
+    <option>Nada interesado</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>Muy interesado</option>
+  </select>
+</fieldset>
+
+<!-- 6) Expectativas y Futuro del País -->
+<fieldset>
+  <legend>6) Expectativas y Futuro del País</legend>
+
+  <label>¿Cómo evalúa la situación actual del país?</label>
+  <select name="situacion_actual_pais" required>
+    <option value="">Seleccione</option>
+    <option>Muy mala</option>
+    <option>Mala</option>
+    <option>Regular</option>
+    <option>Buena</option>
+    <option>Muy buena</option>
+  </select>
+
+  <label>¿Cree que el próximo gobierno mejorará la situación económica del país?</label>
+  <select name="esperanza_economia" required>
+    <option value="">Seleccione</option>
+    <option>Sí, mucho</option>
+    <option>Sí, algo</option>
+    <option>No cambiará</option>
+    <option>Empeorará</option>
+  </select>
+
+  <label>¿Qué tan optimista se siente sobre el futuro de Bolivia?</label>
+  <select name="optimismo_futuro" required>
+    <option value="">Seleccione</option>
+    <option>Nada optimista</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>Muy optimista</option>
+  </select>
+
+  <label>¿Confía en que su voto puede generar un cambio real en el país?</label>
+  <select name="confianza_voto" required>
+    <option value="">Seleccione</option>
+    <option>Sí</option>
+    <option>No</option>
+    <option>No estoy seguro/a</option>
+  </select>
+</fieldset>
+
+      
+
+    <button type="submit">Enviar respuesta</button>
+  </form>
+
+  <section>
+    <h2>Simulación (balotaje)</h2>
+    <pre id="out"></pre>
+    <button id="btn-simular">Correr simulación</button>
+  </section>
+
+  <script>
+  document.getElementById('btn-simular').onclick = async () => {
+    const res = await fetch('/simular');
+    const data = await res.json();
+    document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+  };
+  </script>
+</body>
+</html>
