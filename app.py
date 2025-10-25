@@ -24,17 +24,19 @@ def index():
 
 @app.post('/enviar')
 def enviar():
+    # Recibir los datos del formulario
     data = request.form.to_dict()
-    campos = list(data.keys())
-    valores = [data[k] for k in campos]
 
-    if not campos:
-        return jsonify(ok=False, msg='Formulario vacío'), 400
+    # Asegurarse de que todos los campos estén incluidos en la lista de campos
+    campos = list(data.keys())  # Todos los campos del formulario
+    valores = [data[k] for k in campos]  # Los valores correspondientes
 
+    # Preparar la consulta para insertar en MySQL
     cols = ",".join(campos)
-    placeholders = ",".join(["%s"]*len(campos))
+    placeholders = ",".join(["%s"] * len(campos))
     sql = f"INSERT INTO encuestas ({cols}) VALUES ({placeholders})"
 
+    # Guardar los datos en la base de datos
     conn = get_conn()
     with conn:
         with conn.cursor() as cur:
@@ -43,15 +45,17 @@ def enviar():
 
     return jsonify(ok=True, msg="Respuesta guardada"), 201
 
-@app.route('/simular', methods=['GET','POST'])
+@app.route('/simular', methods=['GET', 'POST'])
 def simular():
     params = default_params.copy()
     if request.method == 'POST':
         body = request.get_json(silent=True) or {}
-        params.update({k:v for k,v in body.items() if k in params})
+        params.update({k: v for k, v in body.items() if k in params})
 
+    # Simulando usando los datos de la BD
     res = run_simulation_from_db(get_conn, **params)
     return jsonify(res)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
